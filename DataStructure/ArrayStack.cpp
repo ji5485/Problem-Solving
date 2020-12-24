@@ -2,22 +2,29 @@
 #include <string.h>
 using namespace std;
 
-class Stack {
+template <typename T>
+class ArrayStack {
   private:
     int index;
-    int arr[10000];
+    int capacity;
+    T *stack;
   
   public:
-    Stack() {
-      index = 0;
+    explicit ArrayStack<T>(int _capacity): index(0), capacity(_capacity) {
+      stack = new T[capacity];
     }
   
-    void push(int element) {
-      arr[index++] = element;
+    void push(T element) {
+      if (index == capacity) {
+        printf("Stack is Full \n");
+        return;
+      }
+      
+      stack[index++] = element;
     }
   
     int pop() {
-      return index == 0 ? -1 : arr[index-- - 1];
+      return index == 0 ? -1 : stack[index-- - 1];
     }
   
     int size() {
@@ -29,14 +36,17 @@ class Stack {
     }
   
     int top() {
-      return index == 0 ? -1 : arr[index - 1];
+      return index == 0 ? -1 : stack[index - 1];
     }
 };
 
 int main() {
-  int n, value;
+  int size, n, value;
   char command[10];
-  Stack stack;
+  
+  printf("Stack Size : ");
+  scanf("%d", &size);
+  ArrayStack<int> stack(size);
   
   scanf("%d", &n);
   

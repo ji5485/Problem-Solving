@@ -23,8 +23,8 @@ class ArrayStack {
       stack[index++] = element;
     }
   
-    int pop() {
-      return index == 0 ? -1 : stack[index-- - 1];
+    T pop() {
+      return index == 0 ? (T) -1 : stack[index-- - 1];
     }
   
     int size() {
@@ -35,7 +35,7 @@ class ArrayStack {
       return index == 0 ? 1 : 0;
     }
   
-    int top() {
+    T top() {
       return index == 0 ? -1 : stack[index - 1];
     }
 };

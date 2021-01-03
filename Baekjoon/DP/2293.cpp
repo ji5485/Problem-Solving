@@ -2,27 +2,23 @@
 #include <algorithm>
 using namespace std;
 
-int getResult(int sum, int index);
-int cache[10000][100], val[100], n, k;
-
 int main() {
-  scanf("%d %d", &n, &k);
-  fill(&cache[0][0], &cache[9999][100], -1);
+  int n, k, dp[10001] = { 0 }, val[101];
   
-  for (int i = 0; i < n; i++)
+  scanf("%d %d", &n, &k);
+  
+  for (int i = 1; i <= n; i++)
     scanf("%d", &val[i]);
   
-  printf("%d \n", getResult(0, 0));
+  dp[0] = 1;
+  
+  for (int i = 1; i <= n; i++) {
+    for (int j = 0; j <= k; j++) {
+      if (val[i] <= j) dp[j] += dp[j - val[i]];
+    }
+  }
+  
+  printf("%d \n", dp[k]);
   
   return 0;
-}
-
-int getResult(int sum, int index) {
-  if (sum > k || index == n) return 0;
-  else if (sum == k) return 1;
-  
-  int &ret = cache[sum][index];
-  if (ret != -1) return ret;
-  
-  return ret = getResult(sum + val[index], index) + getResult(sum + val[index], index + 1) + getResult(sum, index + 1);
 }

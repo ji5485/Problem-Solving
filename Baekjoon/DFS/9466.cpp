@@ -32,7 +32,7 @@ int main() {
 int dfs(int student, vector<int> &path) {
   if (visited[student]) {
     vector<int>::iterator idx = find(path.begin(), path.end(), student);
-    return idx == path.end() ? path.size() : distance(path.begin(), idx);
+    return distance(path.begin(), idx);
   }
   
   visited[student] = 1;

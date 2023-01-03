@@ -1,0 +1,17 @@
+{
+  "name": "Problem-Solving",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ji5485/Problem-Solving.git",
+  "author": "ji5485 <dong5485@gmail.com>",
+  "license": "MIT",
+  "packageManager": "yarn@3.3.1",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "typescript": "^4.9.4"
+  }
+}

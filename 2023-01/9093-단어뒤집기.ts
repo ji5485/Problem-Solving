@@ -1,6 +1,6 @@
 import { readFileSync } from "fs";
 
-const [_, ...arr] = readFileSync("input.txt").toString().trim().split("\n");
+const [_, ...arr] = readFileSync("/dev/stdin").toString().trim().split("\n");
 
 arr.forEach((str) =>
   console.log(
